@@ -1,0 +1,26 @@
+services:
+  servidor:
+    container_name: container-servidor-back
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      DATABASE_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - rede_1
+  mysql:
+    image: mysql:8.3.0
+    container_name: container-mysql
+    volumes:
+      - ./var/lib/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    networks:
+      - rede_1
+
+networks:
+  rede_1:
+    driver: bridge

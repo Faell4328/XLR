@@ -1,0 +1,8 @@
+services:
+  servidor:
+    container_name: container-servidor-front
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
