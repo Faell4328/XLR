@@ -1,6 +1,7 @@
 up:
 	cd back && docker-compose up -d
 	cd front && docker-compose up -d
+	docker exec -it container-servidor-back chown -R 33:33 /var/www/html
 
 down:
 	cd back && docker-compose down

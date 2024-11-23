@@ -14,12 +14,15 @@ services:
     image: mysql:8.3.0
     container_name: container-mysql
     volumes:
-      - ./var/lib/mysql:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     networks:
       - rede_1
+
+volumes:
+  mysql-data:
 
 networks:
   rede_1:
