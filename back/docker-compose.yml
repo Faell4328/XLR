@@ -7,7 +7,8 @@ services:
     volumes:
       - ./:/var/www/html
     environment:
-      DATABASE_PASSWORD: ${DB_PASSWORD}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
     networks:
       - rede_1
   mysql:
