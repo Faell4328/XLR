@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($started)){
+	die("Erro 000");
+}
+
 class Database{
 
 	private $name_database;
