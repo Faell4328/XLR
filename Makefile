@@ -8,7 +8,14 @@ down:
 	cd front && docker-compose down
 
 reset:
+	cd back && docker-compose down
+	cd front && docker-compose down
 	docker rmi front-servidor
 	docker rmi back-servidor
 	cd front && docker build -t front-servidor .
 	cd back && docker build -t back-servidor .
+
+zerar:
+	cd back && docker-compose down
+	cd front && docker-compose down
+	docker volume rm back_mysql-data

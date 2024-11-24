@@ -1,3 +1,9 @@
+cd front
+docker-compose down
+cd ..
+cd back
+docker-compose down
+cd ..
 docker rmi front-servidor
 docker rmi back-servidor
 cd front
