@@ -1,0 +1,15 @@
+<?php
+
+$url_valid = array("/", "/installation", "/login", "/cadastro");
+$path = parse_url($_SERVER['REQUEST_URI'])["path"];
+
+if(!in_array($path, $url_valid)){
+	die("404");
+}
+else{
+	if($path = "/"){
+		require(__DIR__."/Pages/home.html");
+	}
+}
+
+?>

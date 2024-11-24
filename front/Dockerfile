@@ -17,4 +17,12 @@ RUN apt-get install -y \
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli gd zip intl mbstring bcmath exif opcache
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN cd /etc/apache2 && rm apache2.conf
+
+ADD apache2.conf /etc/apache2/
+
+RUN a2enmod rewrite
+
 RUN a2enmod php
