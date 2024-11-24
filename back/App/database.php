@@ -33,11 +33,33 @@ class Database{
 	}
 
 	public function check_status(){
-		$sql = "SELECT status FROM sistema";
 
+		$sql = "SELECT COUNT(*) FROM sistema;";
 		$return = $this->connection_database->query($sql);
+
 		if($return == false){
+
+			$sql = "CREATE TABLE IF NOT EXISTS sistema (status FLOAT(2), nome_loja CHAR(30));";
+			$this->connection_database->query($sql);
+
+			$sql = "INSERT INTO sistema (status, nome_loja) VALUES (0, 'default');";
+			$this->connection_database->query($sql);
+
 			return 0;
+		}
+		else{
+
+			$sql = "SELECT status FROM sistema";
+			$return = $this->connection_database->query($sql);
+
+			if($return->num_rows){
+				$return = $return->fetch_assoc();
+			}
+			else{
+				die("Erro: 312");
+			}
+
+			return $return["status"];
 		}
 	}
 
