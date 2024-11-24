@@ -10,7 +10,7 @@ class Database{
 		$this->name_database = getenv("DB_NAME");
 		$this->password_database = getenv("DB_PASSWORD");
 
-		if($this->name_database == "" && $this->password_database){
+		if($this->name_database == "" && $this->password_database == ""){
 			die("Erro: 123");
 		}
 
