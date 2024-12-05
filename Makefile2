@@ -1,5 +1,6 @@
 up:
 	cd App && docker-compose up -d
+	docker exec -it container-application-xlr chown -R 33:33 /var/www/html
 
 down:
 	cd App && docker-compose down
