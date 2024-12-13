@@ -1,9 +1,5 @@
 <?php
 
-if(!isset($started)){
-	die("Erro 000");
-}
-
 require_once(__DIR__."/message.php");
 $message = new Message;
 
@@ -27,7 +23,6 @@ class Installation{
 					die(json_encode($mensage_return));
 				}
 				else{
-					$GLOBALS["db"] -> save_information_securely($_POST["nome_loja"], "sistema", "nome_loja");
 					die($GLOBALS["message"]->message_ok("Nome da loja salvo"));
 				}
 

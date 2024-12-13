@@ -10,12 +10,5 @@ reset:
 	cd App && docker build -t app-application .
 
 zerar:
-	cd back && docker-compose down
-	cd front && docker-compose down
-	docker volume rm back_mysql-data
-
-delete:
-	cd back && docker-compose down
-	cd front && docker-compose down
-	docker rmi front-servidor
-	docker rmi back-servidor
+	cd App && docker-compose down
+	docker volume rm app_mysql-data
