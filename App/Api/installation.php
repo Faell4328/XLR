@@ -30,13 +30,16 @@ class Installation{
 		if(!isset($_POST["admin_name"])){
 			return false;
 		}
-		if(strlen($_POST["admin_name"])<2 || strlen($_POST["admin_name"] > 30)){
+		
+		if(strlen($_POST["admin_name"]) < 2 || strlen($_POST["admin_name"]) > 30){
 			return false;
 		}
+
+		return true;
 	}
 
 	private check_admin_password(){
-		
+		return true;
 	}
 
 	public function receive_administrator_name_passowrd(){
