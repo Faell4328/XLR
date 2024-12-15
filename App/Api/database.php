@@ -58,19 +58,26 @@ class Database{
 		}
 	}
 
-	public function insert_data($valor){
-		$consulta_tratada = $this->connection_database->prepare("INSET INTO sistema (nome_loja) VALUE (?)");
-		$consulta_tratada->bind_param("s", $valor);
-		$consulta_tratada->execute();
+	public function update_data($data){
+
+		$consulta_tratada = $this->connection_database->prepare('UPDATE '.$data['name_table'].' SET '.$data['name_column'].';');
+
+		if($data["quatity"] == 1){
+			$consulta_tratada->bind_param($data['type'], $data['value']);
+		}
+		else if($data["quatity"] == 2){
+			$consulta_tratada->bind_param($data['type'], $data['value'][0], $data['value'][1]);
+		}
+
+		$store_result = $consulta_tratada->execute();
 		$retorno = $store_result;
 
 		if($retorno == false){
-			echo "oi";
+			return 0;		
 		}
 		else{
-			echo "salvo";
+			return 1;
 		}
-
 	}
 
 }

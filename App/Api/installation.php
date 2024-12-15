@@ -1,32 +1,50 @@
 <?php
 
-require_once(__DIR__."/message.php");
-$message = new Message;
-
-require_once(__DIR__."/database.php");
-$db = new Database;
-
 class Installation{
-	
-	public function __construct($status){
 
-		if($status == 0){
+	private $problem_message="";
 
-			if(isset($_POST["nome_loja"])){
-				
-				if(strlen($_POST["nome_loja"]) > 30 || $_POST["nome_loja"] == "" ){
-					$mensage_return = [
-						"status" => "error",
-						"mensage" => "Não pode passar de 30 caracteres e nem estar vazia o nome da loja"
+	public function receive_information_from_website(){
+		if(isset($_POST["name_store"])){
+    		if(strlen($_POST["name_store"]) <= 30 && $_POST["nome_store"] != ""){
+					$return_value=[
+						"value"=>[$_POST["nome_loja"], "0.1"],
+						"type"=>"sd",
+						"name_table"=>"sistema",
+						"name_column"=>"nome_loja=?, status=?",
+						"quatity"=>2
 					];
 
-					die(json_encode($mensage_return));
-				}
-				else{
-					die($GLOBALS["message"]->message_ok("Nome da loja salvo"));
-				}
+					return $return_value;
+    		}
+    		else{
+					die("O nome está vazio ou é maior que 30 caracteres");
+  	  	}
+		}
+		else{
+			die("Não foi enviado o valor");
+		}
+	}
 
-			}
+	private check_admin_name(){
+		if(!isset($_POST["admin_name"])){
+			return false;
+		}
+		if(strlen($_POST["admin_name"])<2 || strlen($_POST["admin_name"] > 30)){
+			return false;
+		}
+	}
+
+	private check_admin_password(){
+		
+	}
+
+	public function receive_administrator_name_passowrd(){
+		if($this->check_admin_name() && $this->check_admin_password()){
+			
+		}
+		else{
+			
 		}
 	}
 }
