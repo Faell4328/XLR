@@ -68,6 +68,18 @@ class Database{
 		else if($data["quatity"] == 2){
 			$consulta_tratada->bind_param($data['type'], $data['value'][0], $data['value'][1]);
 		}
+		else if($data["quatity"] == 3){
+			$consulta_tratada->bind_param($data['type'], $data['value'][0], $data['value'][1], $data['value'][2]);
+		}
+		else if($data["quatity"] == 4){
+			$consulta_tratada->bind_param($data['type'], $data['value'][0], $data['value'][1], $data['value'][2], $data['value'][3]);
+		}
+		else if($data["quatity"] == 5){
+			$consulta_tratada->bind_param($data['type'], $data['value'][0], $data['value'][1], $data['value'][2], $data['value'][3], $data['value'][4]);
+		}
+		else{
+			die("Erro: 481");
+		}
 
 		$store_result = $consulta_tratada->execute();
 		$retorno = $store_result;

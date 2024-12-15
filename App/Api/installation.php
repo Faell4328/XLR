@@ -44,7 +44,7 @@ class Installation{
 			
 		}
 		else{
-			
+			die("Erro: 571");
 		}
 	}
 }
