@@ -6,9 +6,9 @@ class Installation{
 
 	public function receive_information_from_website(){
 		if(isset($_POST["name_store"])){
-    		if(strlen($_POST["name_store"]) <= 30 && $_POST["nome_store"] != ""){
+    		if(strlen($_POST["name_store"]) <= 30 && $_POST["name_store"] != ""){
 					$return_value=[
-						"value"=>[$_POST["nome_store"], "0.1"],
+						"value"=>[$_POST["name_store"], "0.1"],
 						"type"=>"sd",
 						"name_table"=>"sistema",
 						"name_column"=>"nome_loja=?, status=?",
