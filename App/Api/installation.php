@@ -34,23 +34,49 @@ class Installation{
 		if(strlen($_POST["admin_name"]) < 2 || strlen($_POST["admin_name"]) > 30){
 			return false;
 		}
-		echo "ok";
 
 		return true;
 	}
 
 	private function check_admin_password(){
-		echo "ok";
+		if(!isset($_POST["admin_password"])){
+			return false;
+		}
+		
+		if(strlen($_POST["admin_password"]) < 8 || strlen($_POST["admin_password"]) > 30){
+			die("Your passowrd must be a minimum of 8 caracters and a maximum of 30");
+		}
+
+		$weight_password = 0;
+		$regular_expression = "/\W/";
+		if(!preg_match_all($regular_expression, $_POST["admin_password"], $return)){
+			die("Você deve colocar caracterer especial");
+		}
+
+		$regular_expression = "/[a-z]/";
+		if(!preg_match_all($regular_expression, $_POST["admin_password"], $return)){
+			die("Você deve colocar pelo menos um caractere minúsculo");
+		}
+
+		$regular_expression = "/[A-Z]/";
+		if(!preg_match_all($regular_expression, $_POST["admin_password"], $return)){
+			die("Você deve colocar pelo menos um caractere maiúsculo");
+		}
+
+		$regular_expression = "/[0-9]/";
+		if(!preg_match_all($regular_expression, $_POST["admin_password"], $return)){
+			die("Você deve colocar pelo menos um número");
+		}
 
 		return true;
 	}
 
 	public function receive_administrator_name_passowrd(){
 		if($this->check_admin_name() && $this->check_admin_password()){
-			echo "ok";
+			echo "está ti lindo";
 		}
 		else{
-			die("Erro: 571");
+			die("Nome ou Senha não foi enviado");
 		}
 	}
 }

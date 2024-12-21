@@ -11,15 +11,21 @@ class Index{
 		$this->db = new Database;
 		$this->status = $this->db->check_status();
 
-		if($this->status == 0){
+		if($this->status < 1){
 			include_once("installation.php");
 			$installation = new Installation();
-			$return_installation = $installation->receive_information_from_website();
-			$this->db->update_data($return_installation);
-			$this->status = $this->db->check_status();
-		}
-		if($this->status == 0.1){
-			die("ok");
+
+			if($this->status == 0){
+				$return_installation = $installation->receive_information_from_website();
+				$this->db->update_data($return_installation);
+				$this->status = $this->db->check_status();
+			}
+			if($this->status == 0.1){
+				$return_installation = $installation->receive_administrator_name_passowrd();
+				exit;
+				$this->db->update_data($return_installation);
+				$this->status = $this->db->check_status();
+			}
 		}
 	}
 }
