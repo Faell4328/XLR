@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteRule ^api$ ./Api/index.php
+
+RewriteCond ${REQUEST_FILENAME, f}
+RewriteRule ^(.*)$ ./index.html

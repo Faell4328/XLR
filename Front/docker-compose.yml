@@ -1,0 +1,8 @@
+services:
+  xlr:
+    container_name: container-front
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+     - ./:/var/www/html
